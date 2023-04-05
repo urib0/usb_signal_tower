@@ -5,6 +5,11 @@
 #define STATUS_OK 0
 #define VERSION "1.00"
 
+static char sc_colors[NUMPIXELS][3] = {
+	{5, 0, },
+	{5, 5, 0},
+	{0, 5, 0}};
+
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
 #define DELAYVAL 300
@@ -25,14 +30,11 @@ void loop()
 	pixels.show();
 	delay(DELAYVAL);
 
+	// neopixles output
 	for (int i = 0; i < NUMPIXELS; i++)
 	{
-
-		pixels.setPixelColor(i, pixels.Color(5, 5, 5));
-
+		pixels.setPixelColor(i, pixels.Color(sc_colors[i][0], sc_colors[i][1], sc_colors[i][2]));
 		pixels.show();
-
-		delay(DELAYVAL);
 	}
 
 	// serial feedback output
@@ -42,4 +44,5 @@ void loop()
 		Serial.print(String(i + 1) + "=" + String(visible_state[i]) + ";");
 	}
 	Serial.print(";status=" + String(STATUS_OK) + ";VERSIONS=" + String(VERSION) + "\n");
+	delay(DELAYVAL);
 }
