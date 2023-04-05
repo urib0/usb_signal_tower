@@ -1,12 +1,31 @@
+#include <Adafruit_NeoPixel.h>
+
+#define PIN 6
+
+#define NUMPIXELS 3
+
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+#define DELAYVAL 500
+
 void setup()
 {
-	pinMode(LED_BUILTIN, OUTPUT);
+	pixels.begin();
 }
 
 void loop()
 {
-	digitalWrite(LED_BUILTIN, HIGH);
-	delay(1000);
-	digitalWrite(LED_BUILTIN, LOW);
-	delay(1000);
+	pixels.clear();
+	pixels.show();
+	delay(DELAYVAL);
+
+	for (int i = 0; i < NUMPIXELS; i++)
+	{
+
+		pixels.setPixelColor(i, pixels.Color(5, 5, 5));
+
+		pixels.show();
+
+		delay(DELAYVAL);
+	}
 }
