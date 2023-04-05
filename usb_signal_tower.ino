@@ -1,12 +1,12 @@
 #include <Adafruit_NeoPixel.h>
 
-#define PIN 6
+#define PIN 7
 
 #define NUMPIXELS 3
 
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
-#define DELAYVAL 500
+#define DELAYVAL 300
 
 void setup()
 {
